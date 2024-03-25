@@ -16,7 +16,7 @@ public class PancakeHouseRepository {
     }
 
     public Iterator getTheMenuIterator() {
-        DinerMenu dinerMenu = new DinerMenu();
-        return dinerMenu.createIterator();
+        PancakeHouseMenu pancakeHouseMenu = new PancakeHouseMenu();
+        return pancakeHouseMenu.createIterator();
     }
 }

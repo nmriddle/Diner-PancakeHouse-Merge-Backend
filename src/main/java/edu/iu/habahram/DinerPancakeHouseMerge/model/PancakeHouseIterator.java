@@ -22,4 +22,9 @@ public class PancakeHouseIterator implements Iterator {
         position++;
         return menuItems.get(position);
     }
+
+    @Override
+    public void remove() {
+
+    }
 }

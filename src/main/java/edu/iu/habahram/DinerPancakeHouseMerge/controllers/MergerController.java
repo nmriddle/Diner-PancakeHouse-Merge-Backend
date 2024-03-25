@@ -34,11 +34,11 @@ public class MergerController {
 //
 
         List<MenuItem> menuItems = new ArrayList<>();
-        Iterator lunchItems = dinerRepository.getTheMenuIterator();
+        Iterator<MenuItem> lunchItems = dinerRepository.getTheMenuIterator();
         while (lunchItems.hasNext()) {
             menuItems.add(lunchItems.next());
         }
-        Iterator breakfastItems = pancakeHouseRepository.getTheMenuIterator();
+        Iterator<MenuItem> breakfastItems = pancakeHouseRepository.getTheMenuIterator();
         while (breakfastItems.hasNext()) {
             menuItems.add(breakfastItems.next());
         }
