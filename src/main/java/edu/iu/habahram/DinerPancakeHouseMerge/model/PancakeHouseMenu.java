@@ -31,8 +31,7 @@ public class PancakeHouseMenu {
     }
 
     public void addItem(String name, String description,
-                        boolean vegetarian, double price)
-    {
+                        boolean vegetarian, double price) {
         MenuItem menuItem = new MenuItem(name, description, vegetarian, price);
         menuItems.add(menuItem);
     }
@@ -42,14 +41,16 @@ public class PancakeHouseMenu {
     }
 
 
-
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for(MenuItem item: getMenuItems()) {
+        for (MenuItem item : getMenuItems()) {
             stringBuilder.append(item.toString());
         }
-        return  stringBuilder.toString();
+        return stringBuilder.toString();
     }
 
     // other menu methods here
+    public Iterator createIterator() {
+        return new PancakeHouseIterator(menuItems);
+    }
 }
