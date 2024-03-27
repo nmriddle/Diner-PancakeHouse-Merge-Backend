@@ -1,6 +1,6 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
-public class MenuItem implements Comparable<MenuItem> {
+public class MenuItem extends MenuComponent implements Comparable<MenuItem> {
     String name;
     String description;
     boolean vegetarian;
