@@ -3,7 +3,7 @@ package edu.iu.habahram.DinerPancakeHouseMerge.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PancakeHouseMenu {
+public class PancakeHouseMenu implements Menu {
     List<MenuItem> menuItems;
 
     public PancakeHouseMenu() {
@@ -49,8 +49,9 @@ public class PancakeHouseMenu {
         return stringBuilder.toString();
     }
 
-    // other menu methods here
     public Iterator<MenuItem> createIterator() {
-        return (Iterator<MenuItem>) menuItems.iterator();
+        return menuItems.iterator();
     }
+
+    // other menu methods here
 }
