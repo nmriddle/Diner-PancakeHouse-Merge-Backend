@@ -1,6 +1,8 @@
 package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
-public class MenuItem extends MenuComponent implements Comparable<MenuItem> {
+import java.util.Iterator;
+
+public class MenuItem extends MenuComponent{
     String name;
     String description;
     boolean vegetarian;
@@ -9,7 +11,8 @@ public class MenuItem extends MenuComponent implements Comparable<MenuItem> {
     public MenuItem(String name,
                     String description,
                     boolean vegetarian,
-                    double price) {
+                    double price)
+    {
         this.name = name;
         this.description = description;
         this.vegetarian = vegetarian;
@@ -31,19 +34,16 @@ public class MenuItem extends MenuComponent implements Comparable<MenuItem> {
     public boolean isVegetarian() {
         return vegetarian;
     }
-
     public String toString() {
         return (name + ", $" + price + "\n   " + description);
     }
+    public MenuItem[] getItems() {
+        MenuItem[] items = new MenuItem[1];
+        items[0] = this;
+        return items;
+    }
 
-    @Override
-    public int compareTo(MenuItem other) {
-        if (other.getName().compareTo(this.getName()) < 0) {
-            return -1;
-        }
-        if (other.getName().compareTo(this.getName()) > 0) {
-            return 1;
-        }
-        return 0;
+    public Iterator<MenuComponent> createIterator() {
+        return new NullIterator();
     }
 }

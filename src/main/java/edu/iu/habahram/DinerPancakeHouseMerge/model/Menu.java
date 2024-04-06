@@ -2,9 +2,12 @@ package edu.iu.habahram.DinerPancakeHouseMerge.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class Menu extends MenuComponent {
-    ArrayList<MenuComponent> menuComponents = new ArrayList<>();
+public class Menu extends MenuComponent{
+    Iterator<MenuComponent> iterator = null;
+    ArrayList<MenuComponent> menuComponents = new ArrayList<MenuComponent>();
     String name;
     String description;
 
@@ -22,7 +25,7 @@ public class Menu extends MenuComponent {
     }
 
     public MenuComponent getChild(int i) {
-        return menuComponents.get(i);
+        return (MenuComponent)menuComponents.get(i);
     }
 
     public String getName() {
@@ -34,10 +37,24 @@ public class Menu extends MenuComponent {
     }
 
     public MenuItem[] getItems() {
-        ArrayList<MenuItem> items = new ArrayList<>();
-        for (MenuComponent menuComponent : menuComponents) {
-            Collections.addAll(items, menuComponent.getItems());
+        List<MenuItem> menuItemList = new ArrayList<>();
+        Iterator<MenuComponent> iterator = menuComponents.iterator();
+        while (iterator.hasNext()) {
+            MenuComponent menuComponent =
+                    iterator.next();
+            Collections.addAll(menuItemList, menuComponent.getItems());
+
         }
-        return items.toArray(new MenuItem[0]);
+        return  menuItemList.toArray(new MenuItem[menuItemList.size()]);
     }
+
+    @Override
+    public Iterator<MenuComponent> createIterator() {
+        if (iterator == null) {
+            iterator = new CompositeIterator(menuComponents.iterator());
+        }
+        return iterator;
+    }
+
+
 }
